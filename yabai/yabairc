@@ -1,0 +1,64 @@
+yabai -m config layout bsp
+yabai -m config windows_placement second_child
+
+# padding
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+# mouse
+yabai -m config mouse_follows_focus on
+
+yabai -m config mouse_modifier alt
+# left click + drag
+yabai -m config mouse_action1 move
+# right click + drag
+yabai -m config mouse_action2 resize
+
+yabai -m mouse_drop_action swap
+# autofocus windows on hover
+yabai -m config focus_follows_mouse autofocus
+
+
+## Livakivi
+# floating windows are always on top (default)
+yabai -m config window_topmost on
+
+# Window rules
+yabai -m rule --add app="^(Calculator|System Preferences|System Settings|Archive Utility|Finder)$" manage=off
+# Disable specific apps
+yabai -m rule --add title="^Preview" manage=off
+yabai -m rule --add title="^Preferences" manage=off
+yabai -m rule --add app="^Notes$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="Stats$" manage=off
+
+
+# Space Labels
+yabai -m space 1 --label browser_main
+yabai -m space 2 --label editor_main
+yabai -m space 3 --label other
+yabai -m space 4 --label music
+yabai -m space 6 --label communication
+
+
+yabai -m rule --add app="Google Chrome" space=browser_main
+yabai -m rule --add app="Safari" space=other
+# yabai -m rule --add app="kitty" space=editor
+yabai -m rule --add app="Visual Studio Code" space=editor_main
+yabai -m rule --add app="Spotify" space=music
+yabai -m rule --add app="Zoom" space=other
+
+### Yabai Indicator
+yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_added action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_removed action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_created action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_destroyed action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_focused action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
