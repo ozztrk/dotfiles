@@ -37,19 +37,20 @@ yabai -m rule --add app="Stats$" manage=off
 
 
 # Space Labels
-yabai -m space 1 --label browser_main
-yabai -m space 2 --label editor_main
-yabai -m space 3 --label other
-yabai -m space 4 --label music
-yabai -m space 6 --label communication
+yabai -m space 1 --label browser
+yabai -m space 2 --label editor
+yabai -m space 3 --label devtools
+yabau -m space 4 --label other
+yabai -m space 5 --label communication
+yabai -m space 6 --label music
 
 
-yabai -m rule --add app="Google Chrome" space=browser_main
+yabai -m rule --add app="Google Chrome" space=browser
 yabai -m rule --add app="Safari" space=other
-# yabai -m rule --add app="kitty" space=editor
-yabai -m rule --add app="Visual Studio Code" space=editor_main
+yabai -m rule --add app="kitty" space=editor
+yabai -m rule --add app="Visual Studio Code" space=editor
 yabai -m rule --add app="Spotify" space=music
-yabai -m rule --add app="Zoom" space=other
+yabai -m rule --add app="Zoom" space=communication
 
 ### Yabai Indicator
 yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
