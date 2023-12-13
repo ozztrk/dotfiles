@@ -20,5 +20,10 @@ return require('packer').startup(function(use)
 		vim.cmd('colorscheme catppuccin-frappe')
 	  end
      }
+	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+	use('nvim-treesitter/playground')
+	use('ThePrimeagen/harpoon')
+	use('mbbill/undotree')
+	use('tpope/vim-fugitive')
+end)
 
-  end)
