@@ -1,0 +1,19 @@
+{
+  "schemes" : [
+    {
+      "pointer" : {
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0xb7",
+          "vendorID" : "0x1532",
+          "productName" : "Razer DeathAdder V3 Pro",
+          "serialNumber" : "000000000000",
+          "category" : "mouse"
+        }
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+}
