@@ -22,18 +22,12 @@ yabai -m mouse_drop_action swap
 yabai -m config focus_follows_mouse autofocus
 
 
+# My Automation 
+
+
 ## Livakivi
 # floating windows are always on top (default)
 yabai -m config window_topmost on
-
-# Window rules
-yabai -m rule --add app="^(Calculator|System Preferences|System Settings|Archive Utility|Finder)$" manage=off
-# Disable specific apps
-yabai -m rule --add title="^Preview" manage=off
-yabai -m rule --add title="^Preferences" manage=off
-yabai -m rule --add app="^Notes$" manage=off
-yabai -m rule --add app="^QuickTime Player$" manage=off
-yabai -m rule --add app="Stats$" manage=off
 
 
 # Space Labels
@@ -41,8 +35,8 @@ yabai -m space 1 --label browser
 yabai -m space 2 --label editor
 yabai -m space 3 --label devtools
 yabai -m space 4 --label safari
-yabai -m space 5 --label communication
-yabai -m space 6 --label music
+yabai -m space 5 --label music
+yabai -m space 6 --label communication
 
 
 yabai -m rule --add app="Google Chrome" space=browser
@@ -51,7 +45,19 @@ yabai -m rule --add app="kitty" space=editor
 yabai -m rule --add app="Visual Studio Code" space=editor
 yabai -m rule --add app="Code" space=editor
 yabai -m rule --add app="Spotify" space=music
-yabai -m rule --add app="zoom.us" space=communication
+
+
+# Window rules
+yabai -m rule --add app="^(Calculator|System Preferences|System Settings|Archive Utility|Finder)$" manage=off
+
+# Disable specific apps
+yabai -m rule --add title="^Preview" manage=off
+yabai -m rule --add title="^Preferences" manage=off
+yabai -m rule --add app="^Notes$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="Stats$" manage=off
+yabai -m rule --add app="zoom.us" manage=off
+
 
 ### Yabai Indicator
 yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
@@ -64,3 +70,6 @@ yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U 
 yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
 yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
 yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+
+
+borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
