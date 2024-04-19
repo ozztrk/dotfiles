@@ -1,3 +1,4 @@
-require("ozan")
-print("hello")
+-- init.lua
 
+require "options"
+require "plugins"
