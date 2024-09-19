@@ -1,3 +1,16 @@
+# ___  ___       ______             _____      _               
+# |  \/  |       |  _  \           /  ___|    | |              
+# | .  . |_   _  | | | |_____   __ \ `--.  ___| |_ _   _ _ __  
+# | |\/| | | | | | | | / _ \ \ / /  `--. \/ _ \ __| | | | '_ \ 
+# | |  | | |_| | | |/ /  __/\ V /  /\__/ /  __/ |_| |_| | |_) |
+# \_|  |_/\__, | |___/ \___| \_/   \____/ \___|\__|\__,_| .__/ 
+#          __/ |                                        | |    
+#         |___/                                         |_|    
+# 
+# 
+# By Ozan Öztürk (2024) 
+
+
 # Use Oh My Posh (if not apple terminal)
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_frappe.omp.json')"
@@ -23,6 +36,19 @@ eval "$(op completion zsh)"; compdef _op op
 alias code="code-insiders"
 
 
+
+
+# ______           _    _            _    
+# |  ___|         | |  | |          | |   
+# | |_ ___  _ __  | |  | | ___  _ __| | __
+# |  _/ _ \| '__| | |/\| |/ _ \| '__| |/ /
+# | || (_) | |    \  /\  / (_) | |  |   < 
+#\_| \___/|_|     \/  \/ \___/|_|  |_|\_\
+#                                         
+#
+#
+# H&D Unternehmensberatung GmbH
+
 ##### ADDED FROM H&D NOT USE IN PRIVATE SETUP ######
 # Uncomment this line if you are working in the auslaenderwesen team
 source $HOME/work/ozg/auslaenderwesen/dienste/scripts/.alias_ozg
@@ -42,20 +68,6 @@ an ozg-development
 # export DOCKER_HOST=unix:///var/run/docker.sock
 # If using colima
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
-
-function colima_start() {
-    colima start
-    colima ssh -- sudo mount -t bpf bpffs /sys/fs/bpf
-    colima ssh -- sudo mount --make-shared /sys/fs/bpf
-    colima ssh -- sudo mkdir -p /run/cilium/cgroupv2
-    colima ssh -- sudo mount -t cgroup2 none /run/cilium/cgroupv2
-    colima ssh -- sudo mount --make-shared /run/cilium/cgroupv2
-    colima ssh -- sudo mount --make-shared /
-}
-
-export OZG_REGISTRY=https://harbor.akdb.de/
-export OZG_REGISTRY_USER='o.oeztuerk' # use single quotes if you have special characters in it
-export OZG_REGISTRY_SECRET='zvm-hwx7xqv6QKH-wbf' && echo "{\"auths\":{\"${OZG_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${OZG_REGISTRY_USER}" "${OZG_REGISTRY_SECRET}" | base64 | tr -d '\n')\"}}}" > $HOME/.docker/config.json
 
 export PATH=${PATH}:${HOME}/work/ozg/devtools/ozg-shelltools
 
@@ -104,3 +116,14 @@ function setup_k8s()
     setup_k8s_cert_manager
     setup_k8s_ca_issuer
 }
+
+function colima_k8s() {
+  setup_k8s
+  colima_start
+}
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/ozan.oeztuerk/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export NODE_OPTIONS=--openssl-legacy-provider
