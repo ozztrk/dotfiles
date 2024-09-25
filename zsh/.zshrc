@@ -11,6 +11,11 @@
 # By Ozan Öztürk (2024) 
 
 
+# Homebrew add to Path for bat rg and fzf
+export PATH="/opt/homebrew/bin:$PATH"
+source <(fzf --zsh)
+
+
 # Use Oh My Posh (if not apple terminal)
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_frappe.omp.json')"
@@ -43,7 +48,7 @@ alias code="code-insiders"
 # | |_ ___  _ __  | |  | | ___  _ __| | __
 # |  _/ _ \| '__| | |/\| |/ _ \| '__| |/ /
 # | || (_) | |    \  /\  / (_) | |  |   < 
-#\_| \___/|_|     \/  \/ \___/|_|  |_|\_\
+# \_| \___/|_|     \/  \/ \___/|_|  |_|\_\
 #                                         
 #
 #
