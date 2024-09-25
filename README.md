@@ -34,4 +34,3 @@ This repository is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For questions or issues, please contact [ozan.ztuerk@gmail.com](mailto:ozan.ztuerk@gmail.com).
-```
