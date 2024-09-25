@@ -1,4 +1,3 @@
-markdown
 # Dotfiles
 
 This repository contains configuration files for various tools and environments. To set up these configurations on your system, follow the instructions below.
