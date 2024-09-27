@@ -31,6 +31,8 @@ export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 export PATH=${PATH}:${HOME}/work/ozg/devtools/ozg-shelltools
 
+# sdkman
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 #### BUG FIX
 function colima_start() {
