@@ -112,4 +112,5 @@ eval "$(starship init zsh)"
 # remove conda env-name prompt and show only starships conda env name
 export CONDA_CHANGEPS1=false
 
-source ~/.zshrc.pre-oh-my-zsh
+source ~/dotfiles/zsh/.zshrc_priv
+source ~/dotfiles/zsh/.zshrc_work
