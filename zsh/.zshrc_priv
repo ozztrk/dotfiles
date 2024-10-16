@@ -24,3 +24,5 @@ function nvims() {
 }
 
 bindkey -s ^a "nvims\n"
+
+alias lg="lazygit"
