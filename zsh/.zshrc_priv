@@ -1,9 +1,10 @@
-alias code="code-insiders"
+# Starship Prompt
+eval "$(starship init zsh)"
 
+# NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-alias venv_act="source .venv/bin/activate"
 
 # Nvim Config Switcher
 alias nvim-lazy="NVIM_APPNAME=lazyvim nvim"
@@ -22,7 +23,12 @@ function nvims() {
   fi
   NVIM_APPNAME=$config nvim $@
 }
-
 bindkey -s ^a "nvims\n"
 
+
+# Aliases
+alias code="code-insiders"
+alias venv_act="source .venv/bin/activate"
 alias lg="lazygit"
+# alias fastfetch="fastfetch --kitty .config/fastfetch/pochita.png --logo-width "40""
+alias fastfetch="kitten icat --align=left ~/.config/fastfetch/pochita.png | fastfetch --raw - --logo-width "40""

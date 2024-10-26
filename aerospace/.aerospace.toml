@@ -52,12 +52,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 20
-inner.vertical =   20
-outer.left =       20
-outer.bottom =     20
-outer.top =        20
-outer.right =      20
+inner.horizontal = 13
+inner.vertical =   13
+outer.left =       13
+outer.bottom =     13
+outer.top =        13
+outer.right =      13
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -118,7 +118,7 @@ alt-shift-equal = 'resize smart +50'
 # alt-7 = 'workspace 7'
 # alt-8 = 'workspace 8'
 # alt-9 = 'workspace 9'
-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+alt-a = 'workspace A'
 alt-b = 'workspace B'
 alt-c = 'workspace C'
 # alt-d = 'workspace D'
