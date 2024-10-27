@@ -16,6 +16,7 @@ autoload -U compinit && compinit
 
 
 # Shell Integrations
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
@@ -43,7 +44,6 @@ function nvims() {
 }
 bindkey -s ^a "nvims\n"
 
-echo source ~/.bash_profile >>  ~/.zshrc
 ### Make History persistent between sessions
 HISTSIZE=5000
 HiSTFILE=~/.zsh_history
@@ -69,6 +69,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colorize completions
 zstyle ':completion:*' menu no # disable default zsh completion menu
 # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath' # fzf preview for cd completion
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
+zstyle 'fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color=always $realpath'
 
 # Aliases
 alias code="code-insiders"
@@ -109,4 +110,3 @@ bindkey '^N' history-beginning-search-forward
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /Users/ozan.oeztuerk/.bash_profile
