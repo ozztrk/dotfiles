@@ -1,3 +1,6 @@
+add_newline = true
+
+
 [aws]
 symbol = "  "
 
@@ -162,3 +165,4 @@ symbol = " "
 
 [zig]
 symbol = " "
+
