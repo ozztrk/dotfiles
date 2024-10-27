@@ -43,7 +43,7 @@ function nvims() {
 }
 bindkey -s ^a "nvims\n"
 
-
+echo source ~/.bash_profile >>  ~/.zshrc
 ### Make History persistent between sessions
 HISTSIZE=5000
 HiSTFILE=~/.zsh_history
@@ -77,6 +77,28 @@ alias lg="lazygit"
 alias fastfetch="kitten icat --align=left ~/.config/fastfetch/pochita.png | fastfetch --raw - --logo-width "40""
 alias cat="bat"
 alias ls="ls --color"
+# git aliases
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gco="git checkout"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gbd="git branch -d"
+alias gbm="git branch -m"
+alias gbs="git branch --show-current"
+alias gl="git log"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gdw="git diff --word-diff"
+alias gdc="git diff --cached"
+alias gdcw="git diff --cached --word-diff"
+alias gcl="git clone"
+alias gcf="git config"
 
 # Enable Vim Mode (-e for emacs mode)
 # bindkey -e
@@ -84,5 +106,7 @@ alias ls="ls --color"
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /Users/ozan.oeztuerk/.bash_profile
