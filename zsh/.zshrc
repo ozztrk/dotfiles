@@ -17,7 +17,7 @@ autoload -U compinit && compinit
 
 # Shell Integrations
 eval "$(fzf --zsh)"
-
+eval "$(zoxide init zsh)"
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -83,9 +83,6 @@ alias ls="ls --color"
 # history search navigation (filnd related commands to f.e. docker ctrl+p)
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
-
-# # Suppress login message
-# touch ~/.hushlogin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
