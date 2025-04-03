@@ -9,7 +9,7 @@ To apply the configurations using GNU Stow, run the following commands:
 1. **Stow Zsh, Bash, and Aerospace configurations:**
 
    ```bash
-   stow zsh bash aerospace
+   stow zsh bash aerospace tmux
    ```
 
    This will create symlinks for the Zsh, Bash, and Aerospace configuration files in their respective locations.
