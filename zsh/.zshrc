@@ -102,8 +102,6 @@ alias gcf="git config"
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
-# export ANTHROPIC_API_KEY=
-
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
