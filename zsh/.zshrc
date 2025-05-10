@@ -93,3 +93,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Added by Windsurf
 export PATH="/Users/ozanozturk/.codeium/windsurf/bin:$PATH"
+
+# Add Secrets
+[[ -f ~/.zsh_secrets ]] && source ~/.zsh_secrets
