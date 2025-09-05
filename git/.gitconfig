@@ -8,12 +8,13 @@
 [user]
     useConfigOnly = true
 
-# Directory-based switching (portable, no hostnames leaked)
+# Include personal config by default
+[include]
+    path = ~/.gitconfig-personal
+
+# Override with work config for the work directory
 [includeIf "gitdir:~/code/work/"]
     path = ~/.gitconfig-work
-
-[includeElse]
-    path = ~/.gitconfig-personal
 
 
 # .gitconfig-example
