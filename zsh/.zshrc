@@ -1,59 +1,54 @@
-### Antidote Plugin Manager ###
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
-antidote load
+### --- Antidote Plugin Manager --- ###
+# Antidote loads and manages Zsh plugins
+source "$(brew --prefix)/opt/antidote/share/antidote/antidote.zsh"
+# Initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+# antidote load
+source ~/.zsh_plugins.zsh
 
-# Load zsh-completions
+
+### --- Completions --- ###
 autoload -U compinit && compinit
 
 
-# Shell Integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-# eval "$(oh-my-posh init zsh)"
+### --- Shell Integrations --- ###
+eval "$(fzf --zsh)"                               # fzf fuzzy finder
+eval "$(zoxide init --cmd cd zsh)"                # smarter cd
+# eval "$(oh-my-posh init zsh)"                   # plain oh-my-posh init
 eval "$(oh-my-posh init zsh --config ~/dotfiles/zsh/catppuccin_mocha.omp.json)"
 
 
-# NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-### Make History persistent between sessions
+### --- History Settings --- ###
 HISTSIZE=5000
-HiSTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-# erase duplicates in history file
-HISTDUP=erase
-# append history to the history file instead of overwriting it
-setopt appendhistory
-# share history between sessions
-setopt sharehistory
-# prevent commands from being saved to history if they start with a space
-setopt hist_ignore_space
-# These are used to prevent any duplicate commands from being saved to the history file
-setopt hist_save_no_dups
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-# prevent duplicates from being shown iside historical command search
-setopt hist_find_no_dups
 
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colorize completions
-zstyle ':completion:*' menu no # disable default zsh completion menu
-# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath' # fzf preview for cd completion
+# History behavior tweaks
+setopt appendhistory              # append, don't overwrite
+setopt sharehistory               # share history across sessions
+setopt hist_ignore_space           # ignore cmds starting w/ space
+setopt hist_save_no_dups           # don't save duplicate cmds
+setopt hist_ignore_all_dups        # remove old dups
+setopt hist_ignore_dups            # skip dupes when adding new
+setopt hist_find_no_dups           # don't show dups in search
+HISTDUP=erase                      # erase dups in history file
+
+
+### --- Completion Styling --- ###
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'         # case-insensitive
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"     # colorize completions
+zstyle ':completion:*' menu no                              # disable menu
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
 zstyle 'fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color=always $realpath'
 
-# Aliases
+
+### --- Aliases --- ###
+# General
 alias code="code-insiders"
 alias venv_act="source .venv/bin/activate"
-alias lg="lazygit"
-alias fastfetch="kitten icat --align=left ~/.config/fastfetch/pochita.png | fastfetch --raw - --logo-width "40""
 alias cat="bat"
 alias ls="ls --color"
-# git aliases
+
+# Git
 alias g="git"
 alias gs="git status"
 alias ga="git add"
@@ -76,20 +71,35 @@ alias gdcw="git diff --cached --word-diff"
 alias gcl="git clone"
 alias gcf="git config"
 
-# Enable Vim Mode (-e for emacs mode)
-# bindkey -e
-# history search navigation (filnd related commands to f.e. docker ctrl+p)
+# Other tools
+alias lg="lazygit"
+alias lzd="lazydocker"
+alias fastfetch="kitten icat --align=left ~/.config/fastfetch/pochita.png | fastfetch --raw - --logo-width 40"
+
+
+### --- Keybindings --- ###
+# Vim mode: comment/uncomment as needed
+# bindkey -e  # Emacs mode (default)
+# bindkey -v  # Vim mode
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
 
-alias lzd='lazydocker'
-
-
-# Install NVM via Brew!
+### --- NVM (Node Version Manager) --- ###
+# Correct + non-duplicate NVM setup
 export NVM_DIR="$HOME/.nvm"
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+# Load NVM if installed via Homebrew
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+# Load NVM bash completion if available
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Added by Windsurf
-export PATH="/Users/ozanozturk/.codeium/windsurf/bin:$PATH"
+
+### --- PATH overrides --- ###
+# Windsurf (Codeium)
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+# Local libraries (WORK)
+export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
+
+
