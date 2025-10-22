@@ -17,8 +17,12 @@
     path = ~/.gitconfig-work
 
 
-# .gitconfig-example
+# .gitconfig-example for personal and work
 # [user]
 #     name = YOUR_NAME
 #     email = YOUR_EMAIL
 #     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJNtjDHC8lYJvRqJtXX2pWczqa40xZLi9yBR+1CFgLr
+[core]
+	editor = code --wait
+[fetch]
+	prune = true
